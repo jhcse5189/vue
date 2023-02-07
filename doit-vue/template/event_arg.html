@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Vue Event</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="btnClick">Button</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          btnClick: function(event) {
+            console.log(event);
+            alert("꺅!");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

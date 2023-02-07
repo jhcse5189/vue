@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Vue Template - Data Binding</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-bind:id="idA">ID binding</p>
+      <p v-bind:class="classA">Class binding</p>
+      <p v-bind:style="styleA">Style binding</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data: {
+          idA: 10,
+          classA: 'container',
+          styleA: 'color: blue'
+        }
+      }).$mount('#app');
+    </script>
+  </body>
+</html>

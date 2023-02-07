@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Vue Component Communication</title>
+  </head>
+  <body>
+    <div id="app">
+      <child-cmp></child-cmp>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      var eventBus = new Vue();
+
+      // child
+      Vue.component('child-cmp', {
+        template: '<button v-on:click="showLog">Muyaho</button>',
+        methods: {
+          showLog: function() {
+            eventBus.$emit('show-log', 101);
+          }
+        },
+      });
+
+      // parent
+      var app = new Vue({
+        el: '#app',
+        created: function() {
+          eventBus.$on('show-log', function(value) {
+            console.log("뭐가 오는데? :", value);
+          });
+        }
+      });
+
+    </script>
+  </body>
+</html>

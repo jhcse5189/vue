@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Vue Template - Directives</title>
+  </head>
+  <body>
+    <div id="app">
+      <a v-if="flag">??? : Just Do it!</a>
+      <ul>
+        <li v-for="system in systems">{{ system }}</li>
+      </ul>
+      <p v-show="flag">??? : Muyaho!</p>
+      <h5 v-bind:id="uid">대충 책 제목</h5>
+      <button v-on:click="alert">Warning - 김세정</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data: {
+          flag: false,
+          systems: ['android', 'ios', 'linux'],
+          uid: 10,
+        },
+        methods: {
+          alert: function() {
+            return alert("꺅!");
+          }
+        }
+      }).$mount('#app');
+    </script>
+  </body>
+</html>
