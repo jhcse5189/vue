@@ -19,8 +19,10 @@ export default {
       if (this.newTodoItem !== "") {
         // trim
         var value = this.newTodoItem && this.newTodoItem.trim();
-        console.log(value);
-        localStorage.setItem(value, value);
+        
+        //localStorage.setItem(value, value);
+        this.$emit('addTodo', value);
+        
         // clear input box
         this.clearInput();
       }
