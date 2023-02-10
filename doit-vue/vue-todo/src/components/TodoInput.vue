@@ -4,14 +4,34 @@
     <span class="addContainer" v-on:click="addTodo">
       <i class="addBtn fas fa-plus" aria-hidden="true"></i>
     </span>
+
+    <modal v-if="showModal" @close="showModal = false">
+      <template v-slot:header>
+        <h3>경고! 경고?</h3>
+      </template>
+      
+      <template v-slot:default>
+        <div>Body?</div>
+      </template>
+
+      <template v-slot:footer>
+        <span @click="showModal = false">
+          할 일을 입력하세소사...
+          <i class="closeModalBtn fas fa-times" aria-hidden="true"></i>
+        </span>
+      </template>
+    </modal>
   </div>
 </template>
 
 <script>
+import AlertModal from './common/AlertModal.vue';
+
 export default {
   data() {
     return {
-      newTodoItem: ''
+      newTodoItem: '',
+      showModal: false
     }
   },
   methods: {
@@ -25,11 +45,17 @@ export default {
         
         // clear input box
         this.clearInput();
+      } else {
+        this.showModal = !this.showModal;
       }
     },
     clearInput() {
       this.newTodoItem = '';
     }
+  },
+
+  components: {
+    Modal: AlertModal,
   }
 }
 </script>
